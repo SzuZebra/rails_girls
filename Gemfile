@@ -13,6 +13,13 @@ group :production do
 end
 
 gem 'carrierwave'
+#resize picture
+gem 'mini_magick', '3.7.0'
+
+# user authentication
+gem 'devise'
+gem 'bcrypt'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

@@ -19,15 +19,31 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/">The Idea app</a>
+      
+
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link</a></li>
-      </ul>
+     <p class="navbar-text pull-right">
+        <% if user_signed_in? %>
+        Logged in as <string><%= current_user.email %></string>. <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'  %> | 
+        <%= link_to 'Logout', destroy_user_registration_path, method: :delete, :class => 'navbar-link'  %> | 
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %> |
+          <%= link_to "Login", new_user_session_path, :class => 'navbar-link' %>
+        <% end %>
+      </p>
     </div>
+
+    
+
   </div>
 </nav>  
 
+<% if notice %>
+  <p class="alert alert-succese"><%= alert %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
 
 <div class="container">
   <%= yield %>
